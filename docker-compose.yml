@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  redsocks:
+    image: morrispetris/redsocks   # or your ubuntu-based redsocks image
+    container_name: redsocks
+    restart: unless-stopped
+    network_mode: host            # important so redsocks can redirect host traffic
+    cap_add:
+      - NET_ADMIN                 # required for iptables rules
+      - NET_RAW
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      PROXY_SERVER: host.docker.internal
+      PROXY_PORT: 1080
+      PROXY_TYPE: socks5          # socks5 or http
+      REDIRECT_PORTS: "all"       # redirect all outbound traffic
