@@ -12,7 +12,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
-      PROXY_SERVER: host.docker.internal
+      PROXY_SERVER: 127.0.0.1     # 0.0.0.0:1080 reachable from container
       PROXY_PORT: 1080
       PROXY_TYPE: socks5          # socks5 or http
       REDIRECT_PORTS: "all"       # redirect all outbound traffic
