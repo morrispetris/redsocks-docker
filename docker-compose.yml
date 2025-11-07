@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   redsocks:
-    image: .                         # or your ubuntu-based redsocks image
+    image: .                      # or your ubuntu-based redsocks image
     container_name: redsocks
     restart: unless-stopped
     network_mode: host            # important so redsocks can redirect host traffic
